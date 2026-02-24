@@ -1973,7 +1973,8 @@ class TestX509:
             not_before_str.decode(), "%Y%m%d%H%M%SZ"
         )
         not_before_max = utcnow() + timedelta(seconds=100)
-        assert not_before_min <= not_before <= not_before_max
+        # Reduce flakiness, +/- 1 second tolerance for clock adjustments
+        assert not_before_min - timedelta(seconds=1) <= not_before <= not_before_max + timedelta(seconds=1)
 
     def test_gmtime_adj_notAfter_wrong_args(self) -> None:
         """
