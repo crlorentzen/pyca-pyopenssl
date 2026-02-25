@@ -1993,7 +1993,6 @@ class TestX509:
         """
         cert = load_certificate(FILETYPE_PEM, self.pemData)
         utc_now = utcnow().replace(microsecond=0)
-        utcnow().replace(microsecond=0)
         # -1 second tolerance for clock adjustments
         not_after_min = utc_now + timedelta(seconds=99)
         cert.gmtime_adj_notAfter(100)
