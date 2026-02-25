@@ -2001,7 +2001,7 @@ class TestX509:
         assert not_after_str is not None
         not_after = datetime.strptime(not_after_str.decode(), "%Y%m%d%H%M%SZ")
         # +1 second tolerance for clock adjustments
-        not_after_max = utc_now() + timedelta(seconds=101)
+        not_after_max = utc_now + timedelta(seconds=101)
         assert not_after_min <= not_after <= not_after_max
 
     def test_has_expired(self) -> None:
